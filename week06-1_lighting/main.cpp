@@ -1,24 +1,13 @@
 #include <GL/glut.h>
-float angle=0;
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);///清背景
     glPushMatrix();
-    glRotatef(angle++,0,1,0);///對Y軸轉
-    glBegin(GL_POLYGON);
-        glNormal3f(0,0,1);///打光的法向量
-        glVertex2f(-1,-1);
-        glVertex2f(+1,-1);
-        glVertex2f(+1,+1);
-        glVertex2f(-1,+1);
-    glEnd();
     glutSolidTeapot(0.3);
-    glPopMatrix();
     glutSwapBuffers();
 }
-///打光陣列的宣告
 const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
-const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 0.0f, 1.0f };///黃光
+const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 0.0f, 1.0f };
 const GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
 const GLfloat light_position[] = { 2.0f, 5.0f, -5.0f, 0.0f };
 
@@ -32,7 +21,9 @@ int main(int argc, char*argv[])
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH);
     glutCreateWindow("week04 keyboard mouse motion");
     glutDisplayFunc(display);
-    glutIdleFunc(display);
+
+
+
 glEnable(GL_DEPTH_TEST);
 
     glDepthFunc(GL_LESS);
@@ -66,4 +57,5 @@ glEnable(GL_LIGHT0);
     glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);
     glutMainLoop();
 }
+
 
