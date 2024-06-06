@@ -1,0 +1,57 @@
+///week05_rotating_earth Â∞àÊ?
+/// ??week05_opencv_opengl_myTexture Á®ãÂ??ø‰???
+#include <opencv/highgui.h> ///‰ΩøÁî® OpenCV 2.1 ÊØîË?Á∞°ÂñÆ, ?™Ë???High GUI ?≥ÂèØ
+#include <opencv/cv.h>
+#include <GL/glut.h>
+GLUquadric * quad = NULL; ///todo: Ë¶ÅÊ?‰∏ÄÈ°ÜÊ?Ê®?
+int id1,id2;///≠n∑«≥∆®‚≠”º∆°A•Œ®”¶s∂Kπœ
+int myTexture(char * filename)
+{
+    IplImage * img = cvLoadImage(filename); ///OpenCVËÆÄ??
+    cvCvtColor(img,img, CV_BGR2RGB); ///OpenCVËΩâËâ≤ÂΩ?(?ÄË¶Åcv.h)
+    glEnable(GL_TEXTURE_2D); ///1. ?ãÂ?Ë≤ºÂ??üËÉΩ
+    GLuint id; ///Ê∫ñÂ?‰∏Ä??unsigned int ?¥Êï∏, ??Ë≤ºÂ?ID
+    glGenTextures(1, &id); /// ?¢Á?Generate Ë≤ºÂ?ID
+    glBindTexture(GL_TEXTURE_2D, id); ///Á∂ÅÂ?bind Ë≤ºÂ?ID
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT); /// Ë≤ºÂ??ÉÊï∏, Ë∂ÖÈ??ÖË??ÑÁ??ñT, Â∞±È?Ë¶ÜË≤º??
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT); /// Ë≤ºÂ??ÉÊï∏, Ë∂ÖÈ??ÖË??ÑÁ??ñS, Â∞±È?Ë¶ÜË≤º??
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST); /// Ë≤ºÂ??ÉÊï∏, ?æÂ§ß?ÇÁ??ßÊ?, ?®Ê?ËøëÈ?
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST); /// Ë≤ºÂ??ÉÊï∏, Á∏ÆÂ??ÇÁ??ßÊ?, ?®Ê?ËøëÈ?
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, img->width, img->height, 0, GL_RGB, GL_UNSIGNED_BYTE, img->imageData);
+    return id;
+}
+///?çË≤º‰∏?0Ë°åGLUTÁ®ãÂ? (‰∏çË?Ë≤ºÂ??õÁ?Á®ãÂ?)
+float angle = 0;
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_DEPTH_TEST);
+    glBindTexture(GL_TEXTURE_2D,id2);///ªR•x≠I¥∫
+    glBegin(GL_POLYGON);
+        glTexCoord2f(0,0); glVertex2f(-1,+1);
+        glTexCoord2f(0,1); glVertex2f(-1,-1);
+        glTexCoord2f(1,1); glVertex2f(+1,-1);
+        glTexCoord2f(1,0); glVertex2f(+1,+1);
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D,id1);///¶a≤y
+    glPushMatrix();
+        glRotatef(90, 1, 0, 0);
+        glRotatef(angle++, 0, 0, 1);
+        gluSphere(quad, 0.5, 30, 30); ///glutSolidTeapot( 0.3 );
+    glPopMatrix();
+    glutSwapBuffers();
+}
+int main(int argc, char*argv[])
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_DEPTH);
+    glutInitWindowSize(500,500);
+    glutCreateWindow("week05");
+    glutIdleFunc(display);
+    glutDisplayFunc(display);
+    id2=myTexture("c:/images.jpg");
+    id1=myTexture("c:/earth.jpg");
+    quad = gluNewQuadric(); ///todo:?äÈÄôÈ??áÊ?,?áÂ•Ω
+    gluQuadricTexture(quad, 1);///todo: ?öÂ•Ω?∞Á??ÑË≤º??
+    glutMainLoop();
+}
