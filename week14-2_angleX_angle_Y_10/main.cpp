@@ -21,11 +21,26 @@ int myTexture(char * filename)
 #include <GL/glut.h>
 #include "glm.h"
 GLMmodel * pmodel = NULL;
-GLMmodel * handa = NULL;
-GLMmodel * handb = NULL;
-GLMmodel * upperA = NULL;
-GLMmodel * lowerA = NULL;
+GLMmodel * righthand1 = NULL;
+GLMmodel * righthand2 = NULL;
+GLMmodel * righthand3 = NULL;
+GLMmodel * righthand4 = NULL;
+GLMmodel * lefthand1 = NULL;
+GLMmodel * lefthand2 = NULL;
+GLMmodel * lefthand3 = NULL;
+GLMmodel * lefthand4 = NULL;
+GLMmodel * head1 = NULL;
+GLMmodel * head2 = NULL;
 GLMmodel * body = NULL;
+GLMmodel * rightleg1 = NULL;
+GLMmodel * rightleg2 = NULL;
+GLMmodel * rightleg3 = NULL;
+GLMmodel * rightleg4 = NULL;
+GLMmodel * leftleg1 = NULL;
+GLMmodel * leftleg2 = NULL;
+GLMmodel * leftleg3 = NULL;
+GLMmodel * leftleg4 = NULL;
+
 
 void drawbody(void)
 {
@@ -40,31 +55,242 @@ void drawbody(void)
     glmDraw(body, GLM_SMOOTH | GLM_TEXTURE);
 }
 
-
-void drawUpperA(void)
+void drawrighthand1(void)
 {
-    if (!upperA) {
-	upperA = glmReadOBJ("data/upperA.obj");
-	if (!upperA) exit(0);
-	glmUnitize(upperA);
-	glmFacetNormals(upperA);
-	glmVertexNormals(upperA, 90.0);
+    if (!righthand1) {
+	righthand1 = glmReadOBJ("data/righthand1.obj");
+	if (!righthand1) exit(0);
+	glmUnitize(righthand1);
+	glmFacetNormals(righthand1);
+	glmVertexNormals(righthand1, 90.0);
     }
 
-    glmDraw(upperA, GLM_SMOOTH | GLM_TEXTURE);
+    glmDraw(righthand1, GLM_SMOOTH | GLM_TEXTURE);
 }
-void drawLowerA(void)
+
+void drawrighthand2(void)
 {
-    if (!lowerA) {
-	lowerA = glmReadOBJ("data/lowerA.obj");
-	if (!lowerA) exit(0);
-	glmUnitize(lowerA);
-	glmFacetNormals(lowerA);
-	glmVertexNormals(lowerA, 90.0);
+    if (!righthand2) {
+	righthand2 = glmReadOBJ("data/righthand2.obj");
+	if (!righthand2) exit(0);
+	glmUnitize(righthand2);
+	glmFacetNormals(righthand2);
+	glmVertexNormals(righthand2, 90.0);
     }
 
-    glmDraw(lowerA, GLM_SMOOTH | GLM_TEXTURE);
+    glmDraw(righthand2, GLM_SMOOTH | GLM_TEXTURE);
 }
+
+void drawrighthand3(void)
+{
+    if (!righthand3) {
+	righthand3 = glmReadOBJ("data/righthand3.obj");
+	if (!righthand3) exit(0);
+	glmUnitize(righthand3);
+	glmFacetNormals(righthand3);
+	glmVertexNormals(righthand3, 90.0);
+    }
+
+    glmDraw(righthand3, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawrighthand4(void)
+{
+    if (!righthand4) {
+	righthand4 = glmReadOBJ("data/righthand4.obj");
+	if (!righthand4) exit(0);
+	glmUnitize(righthand4);
+	glmFacetNormals(righthand4);
+	glmVertexNormals(righthand4, 90.0);
+    }
+
+    glmDraw(righthand4, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawlefthand1(void)
+{
+    if (!lefthand1) {
+	lefthand1 = glmReadOBJ("data/lefthand1.obj");
+	if (!lefthand1) exit(0);
+	glmUnitize(lefthand1);
+	glmFacetNormals(lefthand1);
+	glmVertexNormals(lefthand1, 90.0);
+    }
+
+    glmDraw(lefthand1, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawlefthand2(void)
+{
+    if (!lefthand2) {
+	lefthand2 = glmReadOBJ("data/lefthand2.obj");
+	if (!lefthand2) exit(0);
+	glmUnitize(lefthand2);
+	glmFacetNormals(lefthand2);
+	glmVertexNormals(lefthand2, 90.0);
+    }
+
+    glmDraw(lefthand2, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawlefthand3(void)
+{
+    if (!lefthand3) {
+	lefthand3 = glmReadOBJ("data/lefthand3.obj");
+	if (!lefthand3) exit(0);
+	glmUnitize(lefthand3);
+	glmFacetNormals(lefthand3);
+	glmVertexNormals(lefthand3, 90.0);
+    }
+
+    glmDraw(lefthand3, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawlefthand4(void)
+{
+    if (!lefthand4) {
+	lefthand4 = glmReadOBJ("data/lefthand4.obj");
+	if (!lefthand4) exit(0);
+	glmUnitize(lefthand4);
+	glmFacetNormals(lefthand4);
+	glmVertexNormals(lefthand4, 90.0);
+    }
+
+    glmDraw(lefthand4, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawhead1(void)
+{
+    if (!head1) {
+	head1 = glmReadOBJ("data/head1.obj");
+	if (!head1) exit(0);
+	glmUnitize(head1);
+	glmFacetNormals(head1);
+	glmVertexNormals(head1, 90.0);
+    }
+
+    glmDraw(head1, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawhead2(void)
+{
+    if (!head2) {
+	head2 = glmReadOBJ("data/head2.obj");
+	if (!head2) exit(0);
+	glmUnitize(head2);
+	glmFacetNormals(head2);
+	glmVertexNormals(head2, 90.0);
+    }
+
+    glmDraw(head2, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+
+
+void drawrightleg1(void)
+{
+    if (!rightleg1) {
+	rightleg1 = glmReadOBJ("data/rightleg1.obj");
+	if (!rightleg1) exit(0);
+	glmUnitize(rightleg1);
+	glmFacetNormals(rightleg1);
+	glmVertexNormals(rightleg1, 90.0);
+    }
+
+    glmDraw(rightleg1, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawrightleg2(void)
+{
+    if (!rightleg2) {
+	rightleg2 = glmReadOBJ("data/rightleg2.obj");
+	if (!rightleg2) exit(0);
+	glmUnitize(rightleg2);
+	glmFacetNormals(rightleg2);
+	glmVertexNormals(rightleg2, 90.0);
+    }
+
+    glmDraw(rightleg2, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawrightleg3(void)
+{
+    if (!rightleg3) {
+	rightleg3 = glmReadOBJ("data/rightleg3.obj");
+	if (!rightleg3) exit(0);
+	glmUnitize(rightleg3);
+	glmFacetNormals(rightleg3);
+	glmVertexNormals(rightleg3, 90.0);
+    }
+
+    glmDraw(rightleg3, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawrightleg4(void)
+{
+    if (!rightleg4) {
+	rightleg4 = glmReadOBJ("data/rightleg4.obj");
+	if (!rightleg4) exit(0);
+	glmUnitize(rightleg4);
+	glmFacetNormals(rightleg4);
+	glmVertexNormals(rightleg4, 90.0);
+    }
+
+    glmDraw(rightleg4, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawleftleg1(void)
+{
+    if (!leftleg1) {
+	leftleg1 = glmReadOBJ("data/leftleg1.obj");
+	if (!leftleg1) exit(0);
+	glmUnitize(leftleg1);
+	glmFacetNormals(leftleg1);
+	glmVertexNormals(leftleg1, 90.0);
+    }
+
+    glmDraw(leftleg1, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawleftleg2(void)
+{
+    if (!leftleg2) {
+	leftleg2 = glmReadOBJ("data/leftleg2.obj");
+	if (!leftleg2) exit(0);
+	glmUnitize(leftleg2);
+	glmFacetNormals(leftleg2);
+	glmVertexNormals(leftleg2, 90.0);
+    }
+
+    glmDraw(leftleg2, GLM_SMOOTH | GLM_TEXTURE);
+}
+void drawleftleg3(void)
+{
+    if (!leftleg3) {
+	leftleg3 = glmReadOBJ("data/leftleg3.obj");
+	if (!leftleg3) exit(0);
+	glmUnitize(leftleg3);
+	glmFacetNormals(leftleg3);
+	glmVertexNormals(leftleg3, 90.0);
+    }
+
+    glmDraw(leftleg3, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+void drawleftleg4(void)
+{
+    if (!leftleg4) {
+	leftleg4 = glmReadOBJ("data/leftleg4.obj");
+	if (!leftleg4) exit(0);
+	glmUnitize(leftleg4);
+	glmFacetNormals(leftleg4);
+	glmVertexNormals(leftleg4, 90.0);
+    }
+
+    glmDraw(leftleg4, GLM_SMOOTH | GLM_TEXTURE);
+}
+
+
 void myBody(){ ///我的身體
     glPushMatrix();///備分矩陣
         glColor3f(1,0,0);///紅色的
@@ -157,30 +383,15 @@ void display()
 {
 
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-      ///glDisable(GL_TEXTURE_2D);///把貼圖先功能關掉，不然手會被擋住
+
       glPushMatrix();
         glRotatef(angleX[0],1,0,0);
          glRotatef(angleY[0],0,1,0);
         glRotatef(180,0,1,0);///轉成正面
         drawbody();///畫身體
       glPopMatrix();
-    ///glutSolidSphere(0.1,30,30);
-    ///glEnable(GL_TEXTURE_2D);///再把貼圖功能開起來，才能draw
     glColor3f(1,1,1);
-	glPushMatrix();
-        glTranslatef(-0.1,0,0);
-		glRotatef(angleX[1],1,0,0);
-		glRotatef(angleY[1],0,1,0);
-		glTranslatef(0,-0.07,0);
-        drawUpperA();///(3)上手臂放好
-    	glPushMatrix(); ///(0)
-        	glTranslatef(-0.02,-0.09,0);///(3)再掛到上手臂的位置
-        	glRotatef(angleX[2],1,0,0);///(2) x軸轉
-        	glRotatef(angleY[2],0,1,0);
-        	glTranslatef(0,-0.21,0);///(1)
-        	drawLowerA(); ///(0)
-    	glPopMatrix(); ///(0)
-    glPopMatrix();
+
 
     glutSwapBuffers();///(0)
 
@@ -209,7 +420,7 @@ int main(int argc, char*argv[])
     glutKeyboardFunc(keyboard);
 
 
-    myTexture("data/Diffuse.jpg");
+    ///myTexture("data/Diffuse.jpg");
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
